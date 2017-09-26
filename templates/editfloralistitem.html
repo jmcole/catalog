@@ -1,0 +1,69 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit Flora Item</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}">
+
+
+					<label for="description">Habitat:</label>
+						<div class="input-group">
+							<select class="form-control" required name="description" placeholder="Description of the plant habitat" id="description">
+								<option {% if item.description == 'Woodland'%}selected{%endif%}>Woodland</option>
+								<option {% if item.description == 'Wetland'%}selected{%endif%}>Wetland</option>
+								<option {% if item.description == 'Prairie'%}selected{%endif%}>Prairie</option>
+							</select>
+						</div>
+
+
+
+					<label for="number">Number of Individuals in Community:</label>
+					<div class="radio">
+						<label>
+						<input type ="radio" name="number" id ="com1" required value="Common"{% if item.number == 'Common'%}checked{%endif%}>Common (greater than 50)
+					</label>
+					</div>
+
+					<div class="radio">
+						<label>
+						<input type ="radio" name="number" id ="com2" required value="Infrequent" {% if item.number == 'Infrequent'%}checked{%endif%}>Infrequent (between 10 and 50)
+					</label>
+					</div>
+
+
+					<div class="radio">
+						<label>
+						<input type ="radio" name="number" id ="com3" required value="Rare" {% if item.number == 'Rare'%}checked{%endif%}>Rare (less than 10)
+					</label>
+				</div>
+
+				<label for="Type">Type:</label>
+					<div class="input-group">
+						<select class="form-control" name="type" id="type">
+							<option {% if item.type == 'Tree'%}selected{%endif%}>Tree</option>
+							<option {% if item.type == 'Plant'%}selected{%endif%}>Plant</option>
+							<option {% if item.type == 'Vine'%}selected{%endif%}>Vine</option>
+							<option {% if item.type == 'Fern'%}selected{%endif%}>Fern</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+					<a href = '{{url_for('showParks')}}'button class="btn btn-default delete">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

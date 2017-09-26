@@ -1,0 +1,81 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+<div class="col-md-12"></div>
+<div class="row banner main">
+	<div class="col-md-11 col-md-offset-1 padding-none">
+		<h1>{{ park.name }}
+			<figure class="creator">
+				<img src='{{creator.picture}}'>
+				<figcaption>{{ creator.name }}</figcaption>
+			</figure>
+		</h1>
+
+	</div>
+</div>
+<div class="row padding-top padding-bottom">
+	<div class="col-md-1"></div>
+	<div class="col-md-11 padding-none">
+
+	</div>
+	<div class="col-md-7"></div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		{% with messages = get_flashed_messages() %} {% if messages %}
+		<ul>
+			{% for message in messages %}
+			<li> <strong> {{ message }} </strong> </li>
+			{% endfor %}
+		</ul>
+		{% endif %} {% endwith %}
+	</div>
+</div>
+{% if items !=[] %}
+
+<div class="container">
+	<h2>Trees</h2> {% for i in items %} {% if i.type == 'Tree' %}
+	<div class="col-md-2 well well-lg">
+		<h3>{{i.name}}</h3>
+		<p>Primary Habitat: {{i.description}}</p>
+		<p>Community Size: {{i.number}}</p>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+<div class="container">
+	<h2>Plants</h2> {% for i in items %} {% if i.type == 'Plant' %}
+	<div class="col-md-2 well well-lg">
+		<h3>{{i.name}}</h3>
+		<p>Primary Habitat: {{i.description}}</p>
+		<p>Community Size: {{i.number}}</p>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+<div class="container">
+	<h2>Vines</h2> {% for i in items %} {% if i.type == 'Vine' %}
+	<div class="col-md-2 well well-lg">
+		<h3>{{i.name}}</h3>
+		<p>Primary Habiat: {{i.description}}</p>
+		<p>Community Size: {{i.number}}</p>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+<div class="container">
+	<h2>Ferns</h2> {% for i in items %} {% if i.type == 'Fern' %}
+	<div class="col-md-2 well well-lg">
+		<h3>{{i.name}}</h3>
+		<p>Primary Habitat: {{i.description}}</p>
+		<p>Community Size: {{i.number}}</p>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+<div class="col-md-2"></div>
+</div>
+{% endif %}
+{% endblock %}

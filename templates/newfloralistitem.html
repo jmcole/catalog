@@ -1,0 +1,73 @@
+
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>New Flora Item</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action= "#" method = "POST">
+				<div class="form-group">
+				<div>
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="50" required class="form-control" name="name"placeholder="Name of the Plant">
+				</div>
+				<div>
+					<label for="description">Habitat:</label>
+						<div class="input-group">
+							<select class="form-control" name="description" placeholder="Description of the plant habitat" id="description">
+							  <option>Woodland</option>
+							  <option>Wetland</option>
+							  <option>Prairie</option>
+							</select>
+						</div>
+				</div>
+				<div>
+					<label for="number">Number of Individuals in Community:</label>
+					<div class="radio">
+						<label>
+						<input type ="radio" name="number" id="com1" value="Common" required> Common (greater than 50)
+					</label>
+					</div>
+
+					<div class="radio">
+						<label>
+						<input type ="radio" name="number" id="com2" value="Infrequent" required> Infrequent (between 10 and 50)
+					</label>
+					</div>
+
+					<div class="radio">
+						<label>
+						<input type ="radio" name="number" id="com3" value="Rare" required> Rare (less than 10)
+					</label>
+					</div>
+				</div>
+				<div>
+					<label for="type">Type:</label>
+					<div>
+							<div class="input-group">
+								<select class="form-control" name="type" id="type">
+									<option>Tree</option>
+									<option>Plant</option>
+									<option>Vine</option>
+									<option>Fern</option>
+								</select>
+							</div>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-default" id="submit" type="submit" value = "Create">
+					<span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>Create</button>
+					<a href='{{url_for('showParks')}}' button class="btn btn-default delete">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+				</a>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

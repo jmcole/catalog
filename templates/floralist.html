@@ -1,0 +1,113 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ park.name }}
+			<figure class="creator">
+				<img src="{{creator.picture}}">
+				<figcaption>Created by: {{ creator.name }}</figcaption>
+			</figure>
+			</h1>
+
+		</div>
+	</div>
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('editPark', park_id = park.id )}}">
+				<button class="btn btn-default" id="new-floralist-item">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Park
+				</button>
+			</a>
+			<a href="{{url_for('newFloraList', park_id = park.id )}}">
+				<button class="btn btn-default" id="new-floralist-item">
+					<span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>Add Flora Item
+				</button>
+			</a>
+						<a href="{{url_for('deletePark', park_id = park.id )}}">
+				<button class="btn btn-default delete" id="delete-park">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Park
+				</button>
+			</a>
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+
+	{% if items !=[] %}
+				<div class ="container">
+				<h2>Trees</h2>
+					{% for i in items %}
+						{% if i.type == 'Tree' %}
+							<div class="col-md-2 well well-lg">
+								<h3>{{i.name}}</h3>
+								<p>Primary Habitat: {{i.description}}</p>
+								<p>Community Size: {{i.number}}</p>
+								<a href='{{url_for('editFloraList', park_id = park.id, floralist_id=i.id ) }}'>Edit</a> |
+								<a href='{{url_for('deleteFloraList', park_id = park.id, floralist_id=i.id ) }}'>Delete</a>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class= "container">
+				<h2>Plants</h2>
+					{% for i in items %}
+						{% if i.type == 'Plant' %}
+						<div class="col-md-2 well well-lg">
+							<h3>{{i.name}}</h3>
+							<p>Primary Habitat: {{i.description}}</p>
+							<p>Community Size: {{i.number}}</p>
+							<a href='{{url_for('editFloraList', park_id = park.id, floralist_id=i.id ) }}'>Edit</a> |
+							<a href='{{url_for('deleteFloraList', park_id = park.id, floralist_id=i.id ) }}'>Delete</a>
+						</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class ="container">
+				<h2>Vines</h2>
+					{% for i in items %}
+						{% if i.type == 'Vine' %}
+						<div class="col-md-2 well well-lg">
+							<h3>{{i.name}}</h3>
+							<p>Primary Habitat: {{i.description}}</p>
+							<p>Community Size: {{i.number}}</p>
+							<a href='{{url_for('editFloraList', park_id = park.id, floralist_id=i.id ) }}'>Edit</a> |
+							<a href='{{url_for('deleteFloraList', park_id = park.id, floralist_id=i.id ) }}'>Delete</a>
+						</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class = "container">
+					<h2>Ferns</h2>
+						{% for i in items %}
+							{% if i.type == 'Fern' %}
+							<div class="col-md-2 well well-lg">
+								<h3>{{i.name}}</h3>
+								<p>Primary Habitat: {{i.description}}</p>
+								<p>Community Size: {{i.number}}</p>
+								<a href='{{url_for('editFloraList', park_id = park.id, floralist_id=i.id ) }}'>Edit</a> |
+								<a href='{{url_for('deleteFloraList', park_id = park.id, floralist_id=i.id ) }}'>Delete</a>
+							</div>
+							{% endif %}
+						{% endfor %}
+				</div>
+		</div>
+	{% endif %}
+{% endblock %}

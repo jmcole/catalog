@@ -1,0 +1,6 @@
+clientID: 277206485003-m9thl8ekaeqs456i5bvrifsk4qhdit7t.apps.googleusercontent.com
+
+clientSecret: YCR1trdrU-2dpwjDPJPHqs7V
+
+
+app.secret_key = 'hot dog'
