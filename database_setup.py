@@ -64,7 +64,7 @@ class FloraList(Base):
         }
 
 
-engine = create_engine('postgresql://parkfloradatabase')
+engine = create_engine('postgresql://catalog:database@localhost/parkfloradatabase')
 
 
 Base.metadata.create_all(engine)

@@ -23,7 +23,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Park Flora Application"
 
 app.secret_key = 'hot dog'
-engine = create_engine('postgresql://parkfloradatabase')
+engine = create_engine('postgresql://catalog:database@localhost/parkfloradatabase')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
